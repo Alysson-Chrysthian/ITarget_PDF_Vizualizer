@@ -8,7 +8,7 @@
             <x-text-input>Codigo do documento</x-text-input>
         </div>
 
-        <div class="flex gap-4 flex-row">
+        <div class="flex gap-4 flex-row flex-wrap">
             <div class="grow">
                 <label>Data do documento</label>
                 <x-date-input />
