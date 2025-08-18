@@ -79,7 +79,10 @@
         <div>
             <label>Orgao</label>
             <x-select-input>
-                <option selected disabled>Orgao responsavel</option>
+                <option disabled selected>Selecione o orgao responsavel</option>
+                @foreach ($instituitions as $instituition)
+                    <option value="{{ $instituition['codigo'] }}">{{ $instituition['descricao'] }}</option>
+                @endforeach
             </x-select-input>
         </div>
 
@@ -87,6 +90,7 @@
             <div class="grow">
                 <label>Tipo</label>
                 <x-select-input>
+                    <option disabled selected>Tipo de operacao</option>
                     <option value="1">Pagamento</option>
                 </x-select-input>
             </div>

@@ -11,6 +11,44 @@
     --shadow-default: 1px 1px 4px 2px rgb(0, 0, 0, 0.25);
 }
 
+:root {
+    --shadow-default: 1px 1px 4px 2px rgb(0, 0, 0, 0.25);
+}
+
+header {
+    background-color: white;
+}
+
+nav {
+    height: 100dvh;
+    box-shadow: var(--shadow-default);
+}
+
+nav > ul > li {
+    cursor: pointer;
+    padding: 24px;
+} 
+
+nav > ul > li > svg {
+    width: 30px;
+    height: 30px;
+}
+
+nav > ul > li:hover {
+    background-color: rgb(201, 201, 201);
+}
+
+.app {
+    display: flex; 
+    justify-content: space-between;
+}
+
+main {
+    flex-grow: 1;
+    height: 100dvh;
+    overflow: auto;
+}
+
 h1 {
     font-size: 2rem;
     font-weight: bold;
