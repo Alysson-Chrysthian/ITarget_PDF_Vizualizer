@@ -65,8 +65,8 @@
 
         <div class="relative">
             <label>Valor do pagamento</label>
-            <x-text-input>Valor do pagamento</x-text-input>
-            <span class="absolute top-1/2 right-2">R$</span>
+            <x-text-input data-inputmask="'alias': 'currency'">0.00</x-text-input>
+            <span class="absolute top-1/2 left-2">R$</span>
         </div>
 
         <div>

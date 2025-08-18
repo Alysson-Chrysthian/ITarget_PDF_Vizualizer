@@ -24,8 +24,9 @@ nav {
     box-shadow: var(--shadow-default);
 }
 
-nav > ul > li {
+nav > ul > li a {
     cursor: pointer;
+    display: inline-block;
     padding: 24px;
 } 
 

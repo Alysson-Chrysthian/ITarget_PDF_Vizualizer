@@ -17,14 +17,18 @@
                 <nav>
                     <ul>
                         <li>
-                            <abbr title="Gerar folha de pagamento">
-                                <x-css-add />
-                            </abbr>
+                            <a href="{{ route('document.create') }}" wire:navigate>
+                                <abbr title="Gerar folha de pagamento">
+                                        <x-css-add />
+                                </abbr>
+                            </a>
                         </li>
                         <li>
-                            <abbr title="Buscar folha de pagamento">
-                                <x-css-search />
-                            </abbr>
+                            <a href="{{ route('document.search') }}" wire:navigate>
+                                <abbr title="Buscar folha de pagamento">
+                                    <x-css-search />
+                                </abbr>
+                            </a>
                         </li>
                     </ul>
                 </nav>
