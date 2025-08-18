@@ -17,16 +17,14 @@
                 <nav>
                     <ul>
                         <li>
-                            <x-css-file />
+                            <abbr title="Gerar folha de pagamento">
+                                <x-css-add />
+                            </abbr>
                         </li>
                         <li>
-                            <x-css-file />
-                        </li>
-                        <li>
-                            <x-css-file />
-                        </li>
-                        <li>
-                            <x-css-file />
+                            <abbr title="Buscar folha de pagamento">
+                                <x-css-search />
+                            </abbr>
                         </li>
                     </ul>
                 </nav>

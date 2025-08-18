@@ -29,7 +29,7 @@ nav > ul > li {
     padding: 24px;
 } 
 
-nav > ul > li > svg {
+nav > ul > li svg {
     width: 30px;
     height: 30px;
 }
