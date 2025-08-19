@@ -5,6 +5,8 @@ namespace App\Livewire\Forms;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
+use Picqer\Barcode\Renderers\HtmlRenderer;
+use Picqer\Barcode\Types\TypeCode128;
 
 class DocumentForm extends Component
 {
@@ -12,25 +14,33 @@ class DocumentForm extends Component
         $financialYear, $referenceMonth, $processID, $commitID, $documentBox, 
         $paymentBilling, $description, $instituition, $operationType;
     public $instituitions = [];
-    public $placeholder, $functionality = '';
+    public $placeholder, $functionality = '', $validate = false;
 
     protected function rules()
     {
-        return [
-            'documentID' => 'required|numeric|digits:12',
-            'documentDate' => 'required|date',
-            'digitalizationDate' => 'required|date',
-            'paymentDate' => 'required|date',
-            'financialYear' => 'required|numeric|digits:4',
-            'referenceMonth' => 'required|numeric|max_digits:2',
-            'processID' => 'required|numeric|digits:8',
-            'commitID' => 'required|numeric|digits:8',
-            'documentBox' => 'required|numeric|digits:8',
-            'paymentBilling' => 'required|numeric',
-            'description' => 'required|string|max:500',
-            'instituition' => 'required|' . Rule::in(array_keys($this->instituitions)),
-            'operationType' => 'required|' . Rule::in([1]),
+        $validation_rules = [
+            'documentID' => 'nullable|numeric|digits:12',
+            'documentDate' => 'nullable|date',
+            'digitalizationDate' => 'nullable|date',
+            'paymentDate' => 'nullable|date',
+            'financialYear' => 'nullable|numeric|digits:4',
+            'referenceMonth' => 'nullable|numeric|max_digits:2',
+            'processID' => 'nullable|numeric|digits:8',
+            'commitID' => 'nullable|numeric|digits:8',
+            'documentBox' => 'nullable|numeric|digits:8',
+            'paymentBilling' => 'nullable|numeric',
+            'description' => 'nullable|string|max:500',
+            'instituition' => 'nullable|' . Rule::in(array_keys($this->instituitions)),
+            'operationType' => 'nullable|' . Rule::in([1]),
         ];
+
+        if ($this->validate) {
+            foreach ($validation_rules as $field => $rules) {
+                $validation_rules[$field] = str_replace('nullable', 'required', $validation_rules[$field]);
+            }
+        }
+
+        return $validation_rules;
     }
 
     protected function validationAttributes()

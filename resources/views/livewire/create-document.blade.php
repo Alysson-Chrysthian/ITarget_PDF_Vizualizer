@@ -4,5 +4,6 @@
     <livewire:forms.document-form 
         placeholder="Digitalizar"
         functionality="store"    
+        validate
     />
 </div>
