@@ -2,12 +2,35 @@
 
 namespace App\Livewire\Forms;
 
+use Illuminate\Support\Facades\Http;
 use Livewire\Component;
 
 class DocumentForm extends Component
 {
+    public $documentID, $documentDate, $digitalizationDate, $paymentDate, 
+        $financialYear, $referenceMonth, $processID, $commitID, $documentBox, 
+        $paymentBilling, $description, $instituition, $operationType;
     public $instituitions = [];
-    public $placeholder;
+    public $placeholder, $functionality = '';
+
+    protected function rules()
+    {
+        return [
+            //
+        ];
+    }
+
+    protected function validationAttributes()
+    {
+        return [
+            //
+        ];
+    }
+
+    public function updated($attributeName)
+    {
+        $this->validateOnly($attributeName);
+    }
 
     public function mount()
     {
@@ -33,6 +56,21 @@ class DocumentForm extends Component
 
             return $data;
         });
+    }
+
+    public function store()
+    {
+        //
+    }
+
+    public function search()
+    {
+        //
+    }
+
+    public function update()
+    {
+        //
     }
 
     public function render()

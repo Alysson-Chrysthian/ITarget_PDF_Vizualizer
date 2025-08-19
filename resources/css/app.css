@@ -53,7 +53,7 @@ main {
     flex-grow: 1;
     height: 100dvh;
     overflow: auto;
-    padding: 8px;
+    padding: 0px 24px 0px 24px;
 }
 
 h1 {
