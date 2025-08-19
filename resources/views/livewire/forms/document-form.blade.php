@@ -96,7 +96,6 @@
         <div class="relative">
             <label>Valor do pagamento</label>
             <x-text-input data-inputmask="'alias': 'currency'" wire:mode.live="paymentBilling">0.00</x-text-input>
-            <span class="absolute top-1/2 left-2">R$</span>
             @error('paymentBilling')
                 <span class="text-red-500">{{ $message }}</span>
             @enderror
