@@ -85,17 +85,17 @@ class DocumentForm extends Component
 
     public function store()
     {
-        //
+        $this->validate();
     }
 
     public function search()
     {
-        //
+        $this->validate();
     }
 
     public function update()
     {
-        //
+        $this->validate();
     }
 
     public function render()
