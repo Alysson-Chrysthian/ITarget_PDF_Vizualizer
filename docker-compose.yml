@@ -8,4 +8,4 @@ services:
       - ./datadir/pgsql:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: 1234
-      POSTGRES_USER: pdfvizualizer
+      POSTGRES_USER: itarget
