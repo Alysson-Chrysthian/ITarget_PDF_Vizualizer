@@ -17,18 +17,46 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="{{ route('document.create') }}">
-                                <abbr title="Gerar folha de pagamento">
-                                        <x-css-add />
-                                </abbr>
-                            </a>
+                            <span class="menu-dropdown">
+                                <x-css-add />
+                            </span>
+                            <ul class="submenu hidden">
+                                <li>
+                                    <a href="{{ route('document.create') }}">
+                                        <abbr title="Adicionar document">
+                                            <x-css-file />
+                                        </abbr>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <abbr title="Adicionar orgao">
+                                            <x-css-home-alt />
+                                        </abbr>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <abbr title="Adicionar credor">
+                                            <x-ri-bank-line />
+                                        </abbr>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li>
-                            <a href="{{ route('document.search') }}">
-                                <abbr title="Buscar folha de pagamento">
-                                    <x-css-search />
-                                </abbr>
-                            </a>
+                            <span class="menu-dropdown">
+                                <x-css-search />
+                            </span>
+                            <ul class="submenu hidden">
+                                <li>
+                                    <a href="{{ route('document.search') }}">
+                                        <abbr title="Buscar documento">
+                                            <x-css-file />
+                                        </abbr>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </nav>
@@ -41,6 +69,20 @@
         @livewireScripts
         @vite('resources/js/app.js')
         @stack('scripts')
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const menus_dropdown = document.querySelectorAll('.menu-dropdown');
+
+                menus_dropdown.forEach((element) => {
+                    element.addEventListener('click', (event) => {
+                        const submenu = element.nextElementSibling;
+
+                        submenu.classList.toggle('hidden');
+                    });
+                });
+            });
+        </script>
 
     </body>
 </html>
