@@ -2,7 +2,7 @@
     <form class="
         w-full flex flex-col 
         gap-4
-    " wire:submit="{{ $functionality }}">
+    " wire:submit="submit">
         <div>
             <label>Codigo do documento</label>
             <x-text-input wire:model.live="documentID">Codigo do documento</x-text-input>
@@ -109,17 +109,25 @@
             @enderror
         </div>
 
-        <div>
-            <label>Orgao</label>
-            <x-select-input wire:model.live="instituition">
-                <option disabled selected>Selecione o orgao responsavel</option>
-                @foreach ($instituitions as $instituition)
-                    <option value="{{ $instituition['codigo'] }}">{{ $instituition['descricao'] }}</option>
-                @endforeach
-            </x-select-input>
-            @error('instituition')
-                <span class="text-red-500">{{ $message }}</span>
-            @enderror
+        <div class="flex gap-4 flex-row">
+            <div class="grow">
+                <label>Orgao</label>
+                <x-select-input wire:model.live="instituitionID">
+                    <option disabled selected>Selecione o orgao responsavel</option>
+                </x-select-input>
+                @error('instituitionID')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="grow">
+                <label>Credor</label>
+                <x-select-input wire:model.live="creditorID">
+                    <option disabled selected>Selecione o credor responsavel</option>
+                </x-select-input>
+                @error('creditorID')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
+            </div>
         </div>
 
         <div class="flex gap-4 flex-row">
@@ -136,7 +144,7 @@
         </div>
 
         <div>
-            <x-button-dark wire:target="{{ $functionality }}">{{ $placeholder }}</x-button-dark>
+            <x-button-dark wire:target="submit">Enviar</x-button-dark>
         </div>
     </form>
 </div>

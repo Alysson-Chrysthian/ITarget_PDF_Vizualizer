@@ -12,35 +12,27 @@ class DocumentForm extends Component
 {
     public $documentID, $documentDate, $digitalizationDate, $paymentDate, 
         $financialYear, $referenceMonth, $processID, $commitID, $documentBox, 
-        $paymentBilling, $description, $instituition, $operationType;
-    public $instituitions = [];
-    public $placeholder, $functionality = '', $validate = false;
+        $paymentBilling, $description, $instituitionID, $operationType, $creditorID;
+    protected $rules = [
+        'documentID' => 'numeric|digits:12',
+        'documentDate' => 'date',
+        'digitalizationDate' => 'date',
+        'paymentDate' => 'date',
+        'financialYear' => 'numeric|digits:4',
+        'referenceMonth' => 'numeric|max_digits:2',
+        'processID' => 'numeric|digits:8',
+        'commitID' => 'numeric|digits:8',
+        'documentBox' => 'numeric|digits:8',
+        'paymentBilling' => 'numeric',
+        'description' => 'string|max:500',
+        'instituitionID' => 'exists:instituitions,id',
+        'creditorID' => 'exists:creditors,id',
+        'operationType' => 'in:1',
+    ];
 
     protected function rules()
     {
-        $validation_rules = [
-            'documentID' => 'nullable|numeric|digits:12',
-            'documentDate' => 'nullable|date',
-            'digitalizationDate' => 'nullable|date',
-            'paymentDate' => 'nullable|date',
-            'financialYear' => 'nullable|numeric|digits:4',
-            'referenceMonth' => 'nullable|numeric|max_digits:2',
-            'processID' => 'nullable|numeric|digits:8',
-            'commitID' => 'nullable|numeric|digits:8',
-            'documentBox' => 'nullable|numeric|digits:8',
-            'paymentBilling' => 'nullable|numeric',
-            'description' => 'nullable|string|max:500',
-            'instituition' => 'nullable|' . Rule::in(array_keys($this->instituitions)),
-            'operationType' => 'nullable|' . Rule::in([1]),
-        ];
-
-        if ($this->validate) {
-            foreach ($validation_rules as $field => $rules) {
-                $validation_rules[$field] = str_replace('nullable', 'required', $validation_rules[$field]);
-            }
-        }
-
-        return $validation_rules;
+        return $this->rules;
     }
 
     protected function validationAttributes()
@@ -57,8 +49,9 @@ class DocumentForm extends Component
             'documentBox' => 'caixa do documento',
             'paymentBilling' => 'valor do pagamento',
             'description' => 'historico',
-            'instituition' => 'orgaor responsavel',
+            'instituitionID' => 'orgao responsavel',
             'operationType' => 'tipo de operacao',
+            'creditorID' => 'credor responsavel',
         ];
     }
 
@@ -67,43 +60,7 @@ class DocumentForm extends Component
         $this->validateOnly($attributeName);
     }
 
-    public function mount()
-    {
-        $this->instituitions = cache()->remember('instituitions', now()->addMonth(), function () {
-            $data = [];
-            $page = 1;
-
-            do {
-                $response = Http::withHeaders([
-                        'chave-api-dados' => env('GOV_API_KEY'),
-                    ])->get('https://api.portaldatransparencia.gov.br/api-de-dados/orgaos-siafi', [
-                        'pagina' => $page,
-                    ])->json();
-
-                foreach ($response as $value) {
-                    if (!str_starts_with($value['descricao'], 'CODIGO INVALIDO')) {
-                        $data[$value['codigo']] = $value;
-                    }
-                }
-
-                $page++;
-            } while (!empty($response));
-
-            return $data;
-        });
-    }
-
-    public function store()
-    {
-        $this->validate();
-    }
-
-    public function search()
-    {
-        $this->validate();
-    }
-
-    public function update()
+    public function submit()
     {
         $this->validate();
     }

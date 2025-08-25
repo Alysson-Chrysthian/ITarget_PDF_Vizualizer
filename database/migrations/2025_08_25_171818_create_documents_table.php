@@ -16,7 +16,6 @@ return new class extends Migration
             $table->bigInteger('document_id');
             $table->bigInteger('process_id');
             $table->bigInteger('commit_id');
-            $table->bigInteger('instituition_id');
             $table->bigInteger('document_box');
 
             $table->date('document_date');
@@ -28,8 +27,19 @@ return new class extends Migration
             $table->integer('payment_billing');
 
             $table->tinyInteger('operation_type');
-
+            
             $table->text('description');
+
+            $table->unsignedBigInteger('instituition_id');
+            $table->unsignedBigInteger('creditor_id');
+
+            $table->foreign('instituition_id')
+                ->references('id')
+                ->on('instituitions');
+            $table->foreign('creditor_id')
+                ->references('id')
+                ->on('creditors');
+
             $table->timestamps();
         });
     }
