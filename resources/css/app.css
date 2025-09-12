@@ -1,0 +1,109 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+@source './vendor/masmerise/livewire-toaster/resources/views/*.blade.php';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --shadow-default: 1px 1px 4px 2px rgb(0, 0, 0, 0.5);
+}
+
+:root {
+    --shadow-default: 1px 1px 4px 2px rgb(0, 0, 0, 0.25);
+    --color-shadow-default: rgb(0, 0, 0, 0.25);
+}
+
+header {
+    background-color: white;
+}
+
+nav {
+    min-height: 100dvh;
+    box-shadow: var(--shadow-default);
+}
+
+nav > ul > li > span {
+    cursor: pointer;
+    display: block;
+    padding: 24px;
+} 
+
+nav > ul > li > span:hover {
+    background-color: var(--color-shadow-default);
+}
+
+nav > ul > li svg {
+    width: 30px;
+    height: 30px;
+    transition: 0.3s transform ease-in-out;
+}
+
+.submenu li {
+    padding-left: 16px;
+}
+
+.submenu a {
+    padding: 24px;
+    display: block;
+}
+
+.submenu li:hover {
+    background-color: var(--color-shadow-default);
+}
+
+.app {
+    display: flex; 
+    justify-content: space-between;
+}
+
+main {
+    flex-grow: 1;
+    height: 100dvh;
+    overflow: auto;
+    padding: 0px 24px 0px 24px;
+    overflow-y: auto;
+}
+
+main > div {
+    display: flex;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+main > div > div {
+    min-width: 100%;
+    min-height: 100%;
+    margin: 0px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+div.table-container {
+    min-width: 100%;
+    overflow-x: auto;
+}
+
+table td, 
+table th {
+    padding: 8px;
+    text-align: center;
+    border: 1px solid gray;
+}
+
+table tr:hover {
+    background-color: rgba(128, 128, 128, 0.139);
+}
+
+table svg {
+    margin: auto;
+}

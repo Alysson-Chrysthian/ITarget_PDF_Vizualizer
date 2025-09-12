@@ -1,0 +1,46 @@
+<div>
+    <h1>Buscar credor</h1>
+
+    <livewire:forms.creditors.search-creditor-form />
+
+    @if (!$creditors)
+        <p>Nenhum credor encontrado</p>
+    @else
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nome</th>
+                        <th>Criado em</th>
+                        <th>Atualizado em</th>
+                        <th>Editar</th>
+                        <th>Deletar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if ($creditors)
+                        @foreach ($creditors as $creditor)
+                            <tr>
+                                <td>{{ $creditor['id'] }}</td>
+                                <td>{{ $creditor['name'] }}</td>
+                                <td>{{ $creditor['created_at'] }}</td>
+                                <td>{{ $creditor['updated_at'] }}</td>
+                                <td class="cursor-pointer">
+                                    <a href="{{ route('creditors.edit', ['id' => $creditor['id']]) }}">
+                                        <x-css-pen />
+                                    </a>
+                                </td>
+                                <td 
+                                    class="cursor-pointer"
+                                    wire:click="destroy({{ $creditor['id'] }})"
+                                    wire:confirm="Tem certeza que deseja deletar esse credor"
+                                ><x-css-trash /></td>
+                            </tr>
+                        @endforeach
+                    @endif
+                </tbody>
+            </table>
+        </div>
+    @endif
+</div>
