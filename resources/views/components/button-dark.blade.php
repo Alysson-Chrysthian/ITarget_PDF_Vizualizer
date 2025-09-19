@@ -4,8 +4,8 @@
             'type' => 'submit',
             'class' => '
                 shadow-default rounded-md p-2 
-                bg-black text-white cursor-pointer
-                w-full hover:bg-white hover:text-black
+                bg-blue-800 text-white cursor-pointer
+                w-full hover:brightness-80
                 flex justify-center
             ',
         ]) }}

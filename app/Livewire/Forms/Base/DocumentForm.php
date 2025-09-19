@@ -11,6 +11,8 @@ class DocumentForm extends Component
     public $documentID, $documentDate, $digitalizationDate, $paymentDate, 
         $financialYear, $referenceMonth, $processID, $commitID, $documentBox, 
         $paymentBilling, $description, $instituitionID, $operationType, $creditorID;
+    public $isSearch = false;
+    public $placeholder = 'Enviar';
 
     protected $rules = [
         'documentID' => 'numeric|digits:12',

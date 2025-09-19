@@ -3,6 +3,9 @@
         w-full flex flex-col 
         gap-4
     " wire:submit="submit">
+        @if ($isSearch)
+            <div class="flex gap-4">
+        @endif
         <div>
             <label>Codigo do documento</label>
             <x-text-input wire:model.live="documentID">999999999999</x-text-input>
@@ -11,7 +14,7 @@
             @enderror
         </div>
 
-        <div class="flex gap-4 flex-row flex-wrap">
+        <div class="flex gap-4 flex-row flex-grow flex-wrap">
             <div class="grow">
                 <label>Data do documento</label>
                 <x-date-input wire:model.live="documentDate" />
@@ -34,8 +37,14 @@
                 @enderror
             </div>
         </div>
+        @if ($isSearch)
+            </div>
+        @endif
 
-        <div class="flex gap-4 flex-row">
+        @if ($isSearch)
+            <div class="flex gap-4">
+        @endif
+        <div class="flex gap-4 flex-grow flex-row">
             <div class="grow">
                 <label>Exercicio</label>
                 <x-select-input wire:model.live="financialYear">
@@ -61,6 +70,7 @@
                 @enderror
             </div>
         </div>
+
 
         <div class="flex gap-4 flex-row">
             <div class="grow">
@@ -94,22 +104,28 @@
                 @enderror
             </div>
         </div>
+        @if ($isSearch)
+            </div>
+        @endif
 
-        <div class="relative">
-            <label>Valor do pagamento</label>
-            <x-text-input data-inputmask="'alias': 'currency'" wire:model.live="paymentBilling">0.00</x-text-input>
-            @error('paymentBilling')
-                <span class="text-red-500">{{ $message }}</span>
-            @enderror
-        </div>
-
-        <div>
-            <label>Historico</label>
-            <x-text-field wire:model.live="description" />
-            @error('description')
-                <span class="text-red-500">{{ $message }}</span>
-            @enderror
-        </div>
+        @if (!$isSearch)
+            <div class="relative">
+                <label>Valor do pagamento</label>
+                <x-text-input data-inputmask="'alias': 'currency'" wire:model.live="paymentBilling">0.00</x-text-input>
+                @error('paymentBilling')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
+            </div>
+        @endif
+        @if (!$isSearch)
+            <div>
+                <label>Historico</label>
+                <x-text-field wire:model.live="description" />
+                @error('description')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
+            </div>
+        @endif
 
         <div class="flex gap-4 flex-row">
             <div class="grow">
@@ -153,7 +169,7 @@
         </div>
 
         <div>
-            <x-button-dark wire:target="submit">Enviar</x-button-dark>
+            <x-button-dark wire:target="submit">{{ $placeholder }}</x-button-dark>
         </div>
     </form>
 </div>

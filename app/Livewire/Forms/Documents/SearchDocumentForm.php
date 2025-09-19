@@ -9,8 +9,11 @@ use Livewire\Component;
 
 class SearchDocumentForm extends DocumentForm
 {
+    public $isSearch = true;
+
     public function mount()
     {
+        $this->placeholder = 'Buscar';
         $this->submit();
     }
 
