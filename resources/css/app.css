@@ -43,11 +43,11 @@ nav > ul > li svg {
 }
 
 .submenu li {
-    padding-left: 16px;
+    padding-left: 32px;
 }
 
 .submenu a {
-    padding: 24px;
+    padding: 16px;
     display: block;
 }
 

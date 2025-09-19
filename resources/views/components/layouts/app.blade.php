@@ -23,9 +23,7 @@
                             <ul class="submenu hidden">
                                 <li>
                                     <a href="{{ route('documents.create') }}">
-                                        <abbr title="Adicionar document">
-                                            <x-css-file />
-                                        </abbr>
+                                        Adicionar documento
                                     </a>
                                 </li>
                             </ul>
@@ -37,23 +35,17 @@
                             <ul class="submenu hidden">
                                 <li>
                                     <a href="{{ route('documents.search') }}">
-                                        <abbr title="Buscar documento">
-                                            <x-css-file />
-                                        </abbr>
+                                        Buscar documento
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('instituitions.search') }}">
-                                        <abbr title="Buscar orgao">
-                                            <x-css-home-alt />
-                                        </abbr>
+                                        Buscar orgao
                                     </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('creditors.search') }}">
-                                        <abbr title="Buscar credor">
-                                            <x-ri-bank-line />
-                                        </abbr>
+                                        Buscar credor
                                     </a>
                                 </li>
                             </ul>
