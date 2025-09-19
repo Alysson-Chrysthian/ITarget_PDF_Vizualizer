@@ -1,5 +1,16 @@
 <div>
-    <h1>Buscar orgão</h1>
+    <div class="flex flex-row-reverse justify-between items-center">
+        <div>
+            <a href="{{ route('instituitions.create') }}">
+                <x-button-dark 
+                    type="button"
+                >
+                    <x-css-add /> Novo
+                </x-button-dark>
+            </a>
+        </div>
+        <h1>Buscar orgão</h1>
+    </div>
 
     <livewire:forms.instituitions.search-instituition-form />
 
