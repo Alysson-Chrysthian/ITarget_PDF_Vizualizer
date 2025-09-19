@@ -1,5 +1,16 @@
 <div>
-    <h1>Buscar credor</h1>
+    <div class="flex flex-row-reverse items-center justify-between">
+        <div>
+            <a href="{{ route('creditors.create') }}">
+                <x-button-dark
+                    type="button"
+                >
+                    <x-css-add /> Novo
+                </x-button-dark>
+            </a>
+        </div>
+        <h1>Buscar credor</h1>
+    </div>
 
     <livewire:forms.creditors.search-creditor-form />
 
