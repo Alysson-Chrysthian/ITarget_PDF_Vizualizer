@@ -28,20 +28,6 @@
                                         </abbr>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="{{ route('instituitions.create') }}">
-                                        <abbr title="Adicionar orgao">
-                                            <x-css-home-alt />
-                                        </abbr>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('creditors.create') }}">
-                                        <abbr title="Adicionar credor">
-                                            <x-ri-bank-line />
-                                        </abbr>
-                                    </a>
-                                </li>
                             </ul>
                         </li>
                         <li>
