@@ -42,10 +42,6 @@ nav > ul > li svg {
     transition: 0.3s transform ease-in-out;
 }
 
-.submenu li {
-    padding-left: 32px;
-}
-
 .submenu a {
     padding: 16px;
     display: block;

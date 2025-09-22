@@ -39,7 +39,16 @@
 @endpush
 
 <div>
-    <h1>Buscar documento</h1>
+    <div class="flex flex-row-reverse justify-between items-center">
+        <div>
+            <a href="{{ route('documents.create') }}">
+                <x-button-dark>
+                    <x-css-add /> Novo
+                </x-button-dark>
+            </a>
+        </div>
+        <h1>Buscar documento</h1>
+    </div>
 
     <livewire:forms.documents.search-document-form />
 

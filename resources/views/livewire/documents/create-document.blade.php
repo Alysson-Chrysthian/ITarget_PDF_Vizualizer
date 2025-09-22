@@ -12,6 +12,11 @@
         class="hidden"
         wire:model.live="file"
     >
+    <a href="{{ route('documents.search') }}">
+        <x-button-dark>
+            Buscar
+        </x-button-dark>
+    </a>
     <x-button-light 
         id="digitalization-button" 
         type="button"

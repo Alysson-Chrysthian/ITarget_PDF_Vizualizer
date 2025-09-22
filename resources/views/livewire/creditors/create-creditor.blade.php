@@ -7,7 +7,7 @@
         <x-button-dark
             type="button"
         >
-            Retornar
+            Buscar
         </x-button-dark>
     </a>
 </div>

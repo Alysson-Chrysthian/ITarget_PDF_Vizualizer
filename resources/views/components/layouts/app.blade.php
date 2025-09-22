@@ -15,40 +15,21 @@
         <div class="app">
             <header>
                 <nav>
-                    <ul>
+                    <ul class="submenu">
                         <li>
-                            <span class="menu-dropdown">
-                                <x-css-add />
-                            </span>
-                            <ul class="submenu hidden">
-                                <li>
-                                    <a href="{{ route('documents.create') }}">
-                                        Adicionar documento
-                                    </a>
-                                </li>
-                            </ul>
+                            <a href="{{ route('documents.search') }}">
+                                Documentos
+                            </a>
                         </li>
                         <li>
-                            <span class="menu-dropdown">
-                                <x-css-search />
-                            </span>
-                            <ul class="submenu hidden">
-                                <li>
-                                    <a href="{{ route('documents.search') }}">
-                                        Buscar documento
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('instituitions.search') }}">
-                                        Buscar orgao
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="{{ route('creditors.search') }}">
-                                        Buscar credor
-                                    </a>
-                                </li>
-                            </ul>
+                            <a href="{{ route('instituitions.search') }}">
+                                Orgaos
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('creditors.search') }}">
+                                Credores
+                            </a>
                         </li>
                     </ul>
                 </nav>
