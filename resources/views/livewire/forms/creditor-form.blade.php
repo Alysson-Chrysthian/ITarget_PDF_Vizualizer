@@ -1,9 +1,14 @@
 <div>
     <form class="
-        w-full flex flex-col 
+        w-full flex 
+        @if ($isSearch)
+            flex-row items-end 
+        @else
+            flex-col
+        @endif
         gap-4
     " wire:submit="submit">
-        <div>
+        <div class="w-full">
             <label>Nome do credor</label>
             <x-text-input wire:model.live="name">Nome do credor</x-text-input>
             @error('name')

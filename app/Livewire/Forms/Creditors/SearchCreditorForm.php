@@ -11,6 +11,7 @@ use Override;
 class SearchCreditorForm extends CreditorForm
 {
     public $name = '';
+    public $isSearch = true;
 
     public function mount()
     {

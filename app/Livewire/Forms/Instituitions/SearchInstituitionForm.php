@@ -10,6 +10,7 @@ use Livewire\Component;
 class SearchInstituitionForm extends InstituitionForm
 {
     public $name = '';
+    public $isSearch = true;
 
     public function mount()
     {

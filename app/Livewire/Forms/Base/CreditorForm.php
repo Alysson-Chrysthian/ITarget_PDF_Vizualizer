@@ -7,6 +7,7 @@ use Livewire\Component;
 class CreditorForm extends Component
 {   
     public $name;
+    public $isSearch = false;
     
     protected $rules = [
         'name' => 'required|string|unique:creditors,name',
