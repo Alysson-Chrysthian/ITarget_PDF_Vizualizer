@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class SearchInstituitionForm extends InstituitionForm
 {
-    public $name = '';
+    public $name = '', $search = '', $searchTerm = 'id';
     public $isSearch = true;
 
     public function mount()
@@ -29,7 +29,7 @@ class SearchInstituitionForm extends InstituitionForm
         $this->validate();
 
         $instituitions = Instituition::query()
-            ->where('name', 'like', '%' . $this->name . '%')
+            ->where($this->searchTerm, 'like', '%' . $this->search . '%')
             ->get();
 
         $this->dispatch('instituitions-searched', instituitions: $instituitions);

@@ -25,28 +25,32 @@
                         <th>Nome</th>
                         <th>Criado em</th>
                         <th>Atualizado em</th>
-                        <th>Editar</th>
-                        <th>Deletar</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     @if ($creditors)
                         @foreach ($creditors as $creditor)
-                            <tr>
+                            <tr
+                                onclick="window.location='{{ route('creditors.edit', ['id' => $creditor['id']]) }}'"
+                                class="cursor-pointer"
+                            >
                                 <td>{{ $creditor['id'] }}</td>
                                 <td>{{ $creditor['name'] }}</td>
                                 <td>{{ $creditor['created_at'] }}</td>
                                 <td>{{ $creditor['updated_at'] }}</td>
-                                <td class="cursor-pointer">
-                                    <a href="{{ route('creditors.edit', ['id' => $creditor['id']]) }}">
-                                        <x-css-pen />
-                                    </a>
+                                <td class="flex justify-evenly">
+                                    <p class="cursor-pointer">
+                                        <a href="{{ route('creditors.edit', ['id' => $creditor['id']]) }}">
+                                            <x-css-pen />
+                                        </a>
+                                    </p>
+                                    <p
+                                        class="cursor-pointer"
+                                        wire:click="destroy({{ $creditor['id'] }})"
+                                        wire:confirm="Tem certeza que deseja deletar esse credor"
+                                    ><x-css-trash /></p>
                                 </td>
-                                <td 
-                                    class="cursor-pointer"
-                                    wire:click="destroy({{ $creditor['id'] }})"
-                                    wire:confirm="Tem certeza que deseja deletar esse credor"
-                                ><x-css-trash /></td>
                             </tr>
                         @endforeach
                     @endif

@@ -8,12 +8,25 @@
         @endif
         gap-4
     " wire:submit="submit">
-        <div class="w-full">
-            <label>Nome do orgao</label>
-            <x-text-input wire:model.live="name">Nome do orgao</x-text-input>
-            @error('name')
-                <span class="text-red-500">{{ $message }}</span>
-            @enderror
+        <div class="
+            @if (!$isSearch)
+                w-full flex-col
+            @endif
+            flex gap-4
+        ">
+            @if ($isSearch)
+                <x-select-input wire:model.live="searchTerm">
+                    <option value="id">id</option>
+                    <option value="name">descrição</option>
+                </x-select-input>
+                <x-text-input wire:model.live="search">pesquisar...</x-text-input>
+            @else
+                <label>Nome do orgao</label>
+                <x-text-input wire:model.live="name">Nome do orgao</x-text-input>
+                @error('name')
+                    <span class="text-red-500">{{ $message }}</span>
+                @enderror
+            @endif
         </div>
         <div>
             <x-button-dark wire:target="submit">Enviar</x-button-dark>

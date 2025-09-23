@@ -10,7 +10,7 @@ use Override;
 
 class SearchCreditorForm extends CreditorForm
 {
-    public $name = '';
+    public $name = '', $search = '', $searchTerm = 'id';
     public $isSearch = true;
 
     public function mount()
@@ -30,7 +30,7 @@ class SearchCreditorForm extends CreditorForm
         $this->validate();
 
         $creditors = Creditor::query()
-            ->where('name', 'like', '%' . $this->name . '%')
+            ->where($this->searchTerm, 'like', '%' . $this->search . '%')
             ->get();
 
         $this->dispatch('creditors-searched', creditors: $creditors);

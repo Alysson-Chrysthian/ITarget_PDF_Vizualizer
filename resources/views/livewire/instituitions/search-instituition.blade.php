@@ -25,27 +25,31 @@
                         <th>Nome</th>
                         <th>Criado em</th>
                         <th>Atualizado em</th>
-                        <th>Editar</th>
-                        <th>Deletar</th>
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
                     @foreach ($instituitions as $instituition)
-                        <tr>
+                        <tr
+                            onclick="window.location='{{ route('instituitions.edit', ['id' => $instituition['id']]) }}'"
+                            class="cursor-pointer"
+                        >
                             <td>{{ $instituition['id'] }}</td>
                             <td>{{ $instituition['name'] }}</td>
                             <td>{{ $instituition['created_at'] }}</td>
                             <td>{{ $instituition['updated_at'] }}</td>
-                            <td class="cursor-pointer">
-                                <a href="{{ route('instituitions.edit', ['id' => $instituition['id']]) }}">
-                                    <x-css-pen />
-                                </a>
+                            <td class="flex justify-evenly">
+                                <p class="cursor-pointer">
+                                    <a href="{{ route('instituitions.edit', ['id' => $instituition['id']]) }}">
+                                        <x-css-pen />
+                                    </a>
+                                </p>
+                                <p 
+                                    class="cursor-pointer"
+                                    wire:click="destroy({{ $instituition['id'] }})"  
+                                    wire:confirm="Tem certeza que deseja deletar este orgão?"  
+                                ><x-css-trash /></p>
                             </td>
-                            <td 
-                                class="cursor-pointer"
-                                wire:click="destroy({{ $instituition['id'] }})"  
-                                wire:confirm="Tem certeza que deseja deletar este orgão?"  
-                            ><x-css-trash /></td>
                         </tr>
                     @endforeach
                 </tbody>
